@@ -69,11 +69,14 @@ public class RabinKarpAnalyzer implements Analyzer{
 //                            " = " +
 //                            pattern.charAt(patIndex));
 
-                    if (text.charAt(patIndex + textIndex - 1) != pattern.charAt(patIndex)) {
+                    if (text.charAt(textIndex - patIndex - 1) != pattern.charAt(patternLength - patIndex - 1)) {
                         break;
+                    } else {
+                        if (patIndex == patternLength - 1) {
+                            matches.add(textIndex);
+                        }
                     }
                 }
-                matches.add(textIndex);
             }
 
             //Calculate the new Hash values using polynomial rolling hash
